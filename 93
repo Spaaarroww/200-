@@ -1,0 +1,80 @@
+// Часы с минутной и секундной стрелками
+#include <graphics.h>
+#include <stdio.h>
+#include <conio.h>
+#include <inath.h>
+#include <dos.h>
+#define PATHTODRIVER "c: WborlandcWbgiW"
+// выводит вектор заданной длины из текущей точки
+// используется для вывода изображения стрелки
+void vector(int а, // угол между вектором и осью ОХ
+int 1) // длина вектора
+{
+#define G 0.0174532 // коэф. перевода из градусов в радианы
+int хО,уО; // координаты начала вектора
+int х1,у1; // координаты конца вектора
+хО = getx();
+уО = gety();
+х1 = хО + l*cos(a*G);
+у1 = уО - l*sin(a*G);
+lineto(xl,yl);
+}
+void clock О
+{
+int xO = 80, // координаты центра часов
+уО = 80;
+int d = 50; // диаметр циферблата
+int s = 0; // время, кол-во секунд
+int m = 0; // время, кол-во минут
+int as = 90; // угол наклона секундной стрелки
+int am = 90; // угол наклона минутной стрелки
+circle(хО,уО,d+5);
+setfillstyle(SOLID_FILL, 0);
+do {
+// вывести секундную стрелку
+moveto(xO,yO);
+setcolor(YELLOW);
+vector(as,d);
+// вывести минутную стрелку
+moveto(xO,yO);
+setcolor(GREEN);
+vector(am,d-10);
+delay(lOOO); // задержка
+// стереть стрелки
+setcolor(0);
+// секундную
+moveto(xO,yO);
+vector(as, d);
+// минутную
+moveto(xO,yO);
+vector(am,d-10);
+S++;
+if (s > 60) {
+m++;
+s = 0;
+am -== 6; // шаг движения минутной стрелки б градусов
+if (am < 0) am = 354;
+}
+as -= 6;
+if (as < 0) as = 354;
+} while ( ikbhitO
+}
+void main (void)
+{
+int gdriver = DETECT; // драйвер
+int gmode; // режим
+int errorcode; // код ошибки
+initgraph(&gdriver, &gmode, PATHTODRIVER);
+errorcode - graphresult();
+if (errorcode == grOk)
+{
+clock();
+closegraph0; // выход из графического режима
+}
+else
+{
+printf("Ошибка: %d\n", errorcode);
+puts("Для завершения программы нажмите <Enter>");
+getch();
+}
+)
