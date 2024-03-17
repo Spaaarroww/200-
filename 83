@@ -1,0 +1,28 @@
+// Выводит на экран содержимое файла
+#include "stdio.h"
+#include "conio.h"
+#define FNAME "a: \\nuinbers.txt\0" // УЕЬЛЯ файла
+void mainO
+{
+char fname[20] = FNAME;
+FILE *in; // текстовый файл
+сЬгиг St [80]; // строка из файла
+printf("ХпСодержимое файла %s\n", fname);
+puts (" ") ;
+// Открыть файл в режиме чтения (г) текста (t)
+if ((in = fopen(fname, "rt")) == NULL)
+{
+printf("Ошибка открытия файла для чтения");
+getch();
+retiim;
+}
+while (!feof(in))
+{
+fscanf(in,"%s", &st);
+printf("%s\n", st);
+}
+fclose(in); // закрыть файл
+puts (" ") ;
+puts("\nДля завершения нажмите <Enter>");
+getch();
+}
