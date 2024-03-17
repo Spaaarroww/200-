@@ -1,0 +1,69 @@
+// Светофор
+#include <graphics.h>
+#include <stdio.h>
+#include <coniQ.h>
+#include <dos.h>
+#define PATHTODRIVER "c: WborlandcWbgiW"
+// рисует круг заданного цвета
+void krug(int x,int у, int r, int fc, int be)
+{
+// x, y, r - координаты центра и радиус
+// fc, be - цвет круга и окантовки
+setfillstyle(SOLID_FILL,fс);
+setcolor(fc); 
+pieslice(х,у,О,360,г);
+setcolor(be);
+circle(х,у,г);
+}
+void main (void)
+{
+int gdriver = DETECT; // драйвер
+int gmode; // режим
+int errorcode; // код ошибки
+initgraph(&gdriver, &gmode, PATHTODRIVER);
+errorcode = graphresult();
+if (errorcode != grOk) // ошибка инициализации
+// графического режима
+{
+printf("Ошибка: %d\n", errorcode);
+puts("Для завершения программы нажмите <Enter>");
+getch();
+}
+outtextxy(10,10,"Соблюдайте правила уличного движения!");
+rectangle(88,88,112,152);
+// Горит красный свет
+krug(100,100,10,RED,WHITE);
+krug(100,120,10,LIGHTGRAY,WHITE);
+krug(100,140,10,LIGHTGRAY,WHITE);
+for (int i = 1; i <= 3; i++)
+{
+// Здесь горит красный
+delay(3000); // задержка 3 сек
+krugdOO,120,10,YELLOW,WHITE) ; // Включить желтый
+delay(1000);
+krug(100,100,10,LIGHTGRAY,WHITE); // Выключить красный
+krug(100,120,10,LIGHTGRAY,WHITE); // Выключить желтый
+krug(100,140,10,GREEN,WHITE); // Включить зеленый
+delay(2000);
+// Мигающий зеленый сигнал
+for (int j = 1; j <= 5; j++) // мигает 5 раз
+{
+delay(500);
+krug (100 Д40 ДО, GREEN, WHITE) ; // Включить
+// зеленый
+delay(500);
+krug(100,140,10,LIGHTGRAY,WHITE);// Выключить
+// зеленый
+}
+krug(100,120,10,YELLOW,WHITE); // Включить
+// желтый
+delaydSOO);
+krug(100,120,10,LIGHTGRAY,WHITE); // Выключить
+// желтый
+krug(100,100,10,RED,WHITE); // Включить
+// красный
+}
+outtextxy(10,25,"Нажмите <Enter>!");
+getch();
+closegraph(); // выход из графического режима
+} 
