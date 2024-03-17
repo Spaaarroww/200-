@@ -1,0 +1,6 @@
+#include <iostream>
+int main()
+{
+  scanf("%f", &u);
+  scanf("%f", &:r);
+}
