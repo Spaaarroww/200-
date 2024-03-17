@@ -1,0 +1,35 @@
+// Узор из разноцветных концентрических окружностей
+#include <graphics.h>
+tinclude <stdio.h>
+#include <conio.h> 
+#define PATHTODRIVER "с : WborlandcWbgiW"
+void main (void)
+{
+int X = 100, // координаты центра окружности
+у = 100;
+int г = 5; // радиус наименьшей окружности
+int dr = 5; // приращение радиуса окружности
+int color; // цвет окружности
+int gdriver = DETECT; // драйвер
+int gmode; // режим
+int errorcode; // код ошибки
+initgraph(&gdriver, &gmode, PATHTODRIVER);
+errorcode = graphresult();
+if (errorcode == grOk)
+{
+for (color = 1; color <= 15; color ++)
+{
+setcolor(color);
+circle(x,y,r);
+r += dr;
+}
+getch();
+closegraph0; // выход из графического режима
+}
+else
+{
+printf("Ошибка: %d\n", errorcode);
+puts("Для завершения нажмите <Enter>");
+getch();
+}
+} 
