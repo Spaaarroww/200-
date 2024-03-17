@@ -1,0 +1,129 @@
+// Кривая Гильберта
+#include <graphics.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+tinclude <dos.h>
+#define PATHTODRIVER "c: WborlandcWbgiW"
+#define DT 3 // задержка при выводе линий по точкам
+#define и 10 // величина штриха кривой Гильберта
+void Gilbert(int р); // вычерчивает кривую Гильберта
+void main (void)
+{
+int gdriver = DETECT; // драйвер
+int gmode; // режим
+int errorcode; // код ошибки
+initgraph(&gdriver, &gmode, PATHTODRIVER);
+errorcode = graphresult();
+if (errorcode == grOk) {
+outtextxy(10,10,"Кривая Гильберта ...") ;
+Gilbert(4);
+outtextxy(10,25,"Для завершения нажмите <Enter>");
+getch();
+closegraph();
+)
+else {
+printf("Ошибка: %d\n", errorcode);
+printf("\Для завершения программы нажмите <Enter>");
+getch();
+}
+}
+// Кривая Гильберта состоит из четырех элементов: а, Ь, end .
+// Каждый элемент строит соответствующая функция.
+void а(int i);
+void b(int i);
+void с(int i);
+void d(int i);
+void my_lineto(int x2, int у2); // вычерчивает по точкам
+// линию
+void Gilbert(int p) // p - порядок кривой Гильберта
+{
+moveto(450,50);
+a(p) ;
+}
+// Элементы кривой. 
+void а(int i)
+{
+i f (i > 0) {
+d(i-l); my_lineto(getx() - u, getyO);
+a(i-l); my_lineto(getx(), getyO + u) ;
+a(i-l); my lineto (getx () + u, getyO);
+b(i-l);
+}
+}
+void b(int i)
+{
+if (i > 0)
+{
+c(i-l); my_lineto(getx(),gety0 - u);
+b{i-l); my_lineto(getx() + u, getyO);
+b(i-l); my_lineto(getx(),gety() + u);
+a(i-l);
+}
+void с(int i)
+{
+if (i > 0) {
+b(i-l)/ my_lineto(getx() + u,gety());
+с(1-1); my__lineto(getx(), getyO - u) ;
+c(i-l); my_lineto(getx() - u^getyO);
+d(i-l);
+void ci(int 1 )
+{
+if (i > 0) {
+a(l--l); my__lineto(getx() ,gety 0 + u);
+d(i-l); my_lineto(getx() - u,gety());
+d(i-l); my lineto(getx(),gety() - u);
+c(i-l);}
+}
+// вычерчивает по точкам линию
+void my_lineto(int х2, int у2)
+{
+int х1,у1; // координаты начала прямой
+// х2, у2 — координаты конца
+int х,у; // координаты текущей точки
+int dx; // приращение аргумента
+int dy; // приращение у при рисовании
+// вертикальной линии
+int color; // цвет линии
+int a,b; // коэф-ты уравнения прямой
+int п; // кол-во точек
+int i;
+xl = getx();
+yl = gety();
+if ( xl != x2 )
+{
+//не вертикальная линия
+a = (у2-у1)/(х2-х1);
+b == yl- a * xl;
+n = abs{x2-xl)+l;
+if (x2 > xl)
+dx = 1;
+else dx = -1;
+X = xl;
+color = getcolor();
+for (i = 1; i<= n; i++)
+{
+у = a*x + b;
+putpixel(x,y,color);
+delay(DT);
+X += dx;
+}
+}
+else { // вертикальная линия
+n = abs(у2-у1);
+if (у2 > yl)
+dy = 1;
+else dy = -1;
+X = xl;
+У = у1;
+color = getcolor();
+for (i = 1; i<=n; i++)
+{
+putpixel(x, y, color);
+delay(DT);
+у += dy;
+}
+}
+putpixel(x2, у2, color);
+moveto(x2, у2);}
