@@ -1,0 +1,46 @@
+// Движущаяся окружность
+#include <graphics.h>
+#include <stdio.h>
+#include <conio.h>
+#include <dos.h> // для доступа к delay
+#define PATHTODRIVER "c: WborlandcWbgiW"
+// вычерчивает окружность заданного цвета
+void okr(int x, int y, // координаты центра
+int r, // радиус
+int color) // цвет
+{
+setcolor(color);
+circle(x,y,r);
+}
+void main (void)
+int x,y; // координаты центра окружности
+int г = 5; // радиус наименьшей окружности
+#define dt 10 // задержка между перемещениями
+// 0.01 сек
+#define dx 5 // шаг перемещения
+int maxx; // X — координата крайней правой
+// точки экрана
+int gdriver = DETECT; // драйвер
+int gmode; // режим
+int errorcode; // код ошибки
+initgraph(&gdriver, &ginode, PATHTODRIVER);
+errorcode = graphresult();
+if (errorcode == grOk)
+{ X = 0; / / движение от левой границы экрана
+у = 100;
+шахх = getmaxx();
+while (х < шахх)
+{
+окг(х,у,r,RED); // нарисовать окружность
+delay(dt); // задержка
+okr(х,у,г,BLACK)/// стереть окружность
+X += dx;
+}
+closegraphO; // выход из графического режима
+}
+else
+{
+ргintf("Ошибка: %d\n", errorcode);
+puts("Для завершения нажмите <Enter>");
+getch();
+}
