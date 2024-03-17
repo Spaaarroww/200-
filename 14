@@ -1,0 +1,7 @@
+#include <iostream>
+int main()
+{
+  float ctetr, cobl, ckar; // цена тетради, обложки и карандаша
+int ntetr, nkar;// кол-во тетрадей и карандашей
+float summ;// cyммa покупки
+}
