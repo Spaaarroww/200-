@@ -1,0 +1,37 @@
+// Флажок
+#include <graphics.h>
+#include <stdio.h>
+#include <conio.h>
+#define PATHTODRIVER "c: WborlandcWbgiW"
+int flagO
+{
+int point[12]; // координаты точек флажка
+// задать координаты контура флажка
+point[О] = 100; point[1] = 100;
+point[2] = 160; point[3] = 100;
+point[4] = 140; point[5] = 120;
+point[6] = 160; point[7] = 140;
+point[8] = 100; point[9] = 140;
+point[10]= 100; point[11] = 100;
+setfillstyle(SOLID__FILL, RED);
+fillpoly(6, point);
+line(100, 140, 100, 170);
+void main (void)
+{
+int gdriver = DETECT; // драйвер
+int gmode; // режР1м
+int errorcode; // код ошибки
+initgraph(&gdriver, &gmode, PATHTODRIVER);
+errorcode = graphresult();
+if (errorcode != grOk) // ошибка инициализации
+// графического режима
+{
+ргintf("Ошибка: %d\n", errorcode);
+puts("Для завершения программы нажмите <Enter>");
+getch();
+return;
+}
+flag О;
+getch();
+closegraph(); // выход из графического режима
+}
